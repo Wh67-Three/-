@@ -4,3 +4,27 @@
 代码清晰：明确区分指针和节点，避免混淆。
 一致性：与其他指针变量（如 pTail、pCurrent）保持一致。
 避免误解：pHead 明确表示这是一个指针，而不是节点。
+
+
+
+2 exit(0) 与 return 0 的区别
+
+exit(0)：
+用于立即终止程序，并向操作系统返回一个状态码。
+在调用 exit 时，程序会执行注册的 atexit 函数，刷新所有打开的输出流，并关闭所有打开的文件。
+直接终止整个程序，无论处于哪个函数或位置。
+
+return 0：
+用于从主函数或其他函数返回值。
+当在 main 函数中使用 return 0 时，效果相当于调用 exit(0)，即正常退出程序。
+如果在其他函数中使用 return，只会返回到调用该函数的地方，不会终止整个程序。
+
+3 qsort(arr, n, sizeof(int), compare);
+qsort 函数 是 C 标准库中的一个函数，用于对数组进行快速排序。其原型为：
+void qsort(void *base, size_t nitems, size_t size, int (*compar)(const void *, const void *));
+DiffCopyInsert
+参数说明：
+base：指向数组的指针。
+nitems：数组中元素的数量（数目）。
+size：每个元素的大小，通常使用 sizeof(type) 来获取。
+compar：指向比较函数的指针，用于确定两个元素的顺序。函数应返回小于、等于或大于零。
